@@ -1,4 +1,5 @@
 from spyre import server
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -85,28 +86,28 @@ class MyApp(server.App) :
         data = data[(data['week'] >= wfrom) & (data['week'] <= wto)]
         return data
 
-    def getPlot1(self, params):
+    def Plot1(self, params):
         df = self.getData(params)
-        plt_obj = df.plot(kind='bar',x='week',y='VHI', legend=False)
+        plt_obj = df.plot(kind='bar',x='week',y='VHI')
         fig = plt_obj.get_figure()
         return fig   
     
-    def getPlot2(self, params):
+    def Plot2(self, params):
         df = self.getData(params)
-        plt_obj = df.plot(kind='bar',x='week',y='VCI', legend=False)
+        plt_obj = df.plot(kind='bar',x='week',y='VCI')
         fig = plt_obj.get_figure()
         return fig  
     
-    def getPlot3(self, params):
+    def Plot3(self, params):
         df = self.getData(params)
-        plt_obj = df.plot(kind='bar',x='week',y='TCI', legend=False)
+        plt_obj = df.plot(kind='bar',x='week',y='TCI')
         fig = plt_obj.get_figure()
         return fig  
     
-    def getPlot4(self, params):
+    def Plot4(self, params):
         df = self.getData(params)
         df = df.drop(['year', 'provinceID', 'SMN', 'SMT'], axis=1)
-        return df.plot.bar()  
+        return df.plot(kind = 'bar', x = 'week', y = ['VHI', 'VCI', 'TCI'])  
     
     
 app = MyApp()
