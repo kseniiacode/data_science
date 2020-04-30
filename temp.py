@@ -81,9 +81,8 @@ class MyApp(server.App) :
         chyear = params['chyear']
         wfrom=params['wfrom']
         wto=params['wto']
-        data = df[(df['provinceID'].astype('int') == int(prov))]
+        data = df[(df['provinceID'].astype('str') == str(prov)) & (df['year'] == chyear)]
         data = data[(data['week'] >= wfrom) & (data['week'] <= wto)]
-        
         return data
 
     def getPlot1(self, params):
