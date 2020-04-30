@@ -1,6 +1,4 @@
 from spyre import server
-import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 
 class MyApp(server.App) :
@@ -88,21 +86,15 @@ class MyApp(server.App) :
 
     def Plot1(self, params):
         df = self.getData(params)
-        plt_obj = df.plot(kind='bar',x='week',y='VHI')
-        fig = plt_obj.get_figure()
-        return fig   
+        return df.plot(kind='bar',x='week',y='VHI')
     
     def Plot2(self, params):
         df = self.getData(params)
-        plt_obj = df.plot(kind='bar',x='week',y='VCI')
-        fig = plt_obj.get_figure()
-        return fig  
-    
+        return df.plot(kind='bar',x='week',y='VCI')
+        
     def Plot3(self, params):
         df = self.getData(params)
-        plt_obj = df.plot(kind='bar',x='week',y='TCI')
-        fig = plt_obj.get_figure()
-        return fig  
+        return df.plot(kind='bar',x='week',y='TCI')
     
     def Plot4(self, params):
         df = self.getData(params)
